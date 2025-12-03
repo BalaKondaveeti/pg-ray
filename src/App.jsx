@@ -7,6 +7,7 @@ import ReactFlow, {
   applyNodeChanges 
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import { Github } from 'lucide-react';
 
 import { parsePlanToGraph } from './utils/parser';
 import { parseTextPlan } from './utils/textParser';
@@ -74,35 +75,54 @@ function App() {
     <div className="flex h-screen w-full flex-col md:flex-row bg-gray-50">
       
       {/* Sidebar: Input */}
-      <div className="w-full md:w-1/3 p-4 flex flex-col border-r bg-white shadow-sm z-10">
-        <h1 className="text-2xl font-bold mb-4 text-indigo-700 flex items-center gap-2">
-           PG-Ray 
-           <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded">Visualizer</span>
-        </h1>
-        
-        <p className="text-sm text-gray-500 mb-2">
-          Run: <code>EXPLAIN (ANALYZE, COSTS, FORMAT JSON) SELECT...</code>
-        </p>
+      <div className="w-full md:w-1/3 p-4 flex flex-col border-r bg-white shadow-sm z-10 h-full">
 
-        <textarea
-          className="flex-1 p-3 border rounded-lg font-mono text-xs focus:ring-2 focus:ring-indigo-500 outline-none resize-none bg-gray-50"
-          placeholder='Paste your JSON output here...'
-          value={jsonInput}
-          onChange={(e) => setJsonInput(e.target.value)}
-        />
-        
-        {error && (
-            <div className="mt-2 p-2 bg-red-50 text-red-600 text-xs rounded border border-red-200">
-                {error}
+        {/* Top Section: Title & Controls */}
+        <div className="flex-1 flex flex-col min-h-0">
+          <h1 className="text-2xl font-bold mb-4 text-indigo-700 flex items-center gap-2">
+            PG-Ray
+            <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded">Redshift</span>
+            <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded">PostgresQL</span>
+          </h1>
+
+          <p className="text-sm text-gray-500 mb-2">
+            Paste Explain below:
+          </p>
+
+          <textarea
+            className="flex-1 p-3 border rounded-lg font-mono text-xs focus:ring-2 focus:ring-indigo-500 outline-none resize-none bg-gray-50 mb-2"
+            placeholder='Paste output here...'
+            value={jsonInput}
+            onChange={(e) => setJsonInput(e.target.value)}
+          />
+
+          {error && (
+            <div className="mb-2 p-2 bg-red-50 text-red-600 text-xs rounded border border-red-200">
+              {error}
             </div>
-        )}
+          )}
 
-        <button
-          onClick={handleVisualize}
-          className="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-indigo-200"
-        >
-          Visualize Plan
-        </button>
+          <button
+            onClick={handleVisualize}
+            className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-indigo-200"
+          >
+            Visualize Plan
+          </button>
+        </div>
+
+        {/* Bottom Section: Footer */}
+        <div className="mt-6 pt-4 border-t border-gray-100 text-center">
+          <a
+            href="https://github.com/BalaKondaveeti"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 text-gray-500 hover:text-indigo-600 transition-colors text-sm font-medium"
+          >
+            <Github size={18} />
+            <span>Built by Bala Kondaveeti</span>
+          </a>
+        </div>
+
       </div>
 
       {/* Main: Graph Area */}
