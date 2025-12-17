@@ -26,7 +26,7 @@ It is a safe, lightweight utility that I built for myself, but it is useful for 
 
 ---
 
-## ✨ Features
+## Features
 
 * **🔒 Privacy First:** All parsing and rendering happens locally in your browser.
 * **📝 Dual Format Support:** Paste either **JSON** (`FORMAT JSON`) or standard **Text** output.
@@ -36,9 +36,9 @@ It is a safe, lightweight utility that I built for myself, but it is useful for 
 
 ---
 
-## 🚀 Roadmap & Future Features
+## Roadmap & Future Features [Please contribute]
 
-I have big plans for PG-Ray and would love your help! Here is what is coming next:
+Would love your help in completing these! Here is what is coming next:
 
 * [ ] **Shareable Links (No Backend):** Implement Base64 encoding of the plan directly into the URL. This will allow users to share a visualization with a peer via a simple link *without* storing the data on a server.
 * [ ] **Dagre Auto-Layout:** Improve graph rendering for massive, complex queries to reduce node overlap.
