@@ -1,16 +1,69 @@
-# React + Vite
+# PG-Ray: Postgres Explain Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![PG-Ray Banner](https://img.shields.io/badge/Postgres-Explain_Visualizer-4F46E5?style=for-the-badge&logo=postgresql&logoColor=white)
+![Privacy Focused](https://img.shields.io/badge/Privacy-100%25_Client_Side-green?style=for-the-badge&logo=shield)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
-Currently, two official plugins are available:
+**PG-Ray** is a free, privacy-first tool to visualize PostgreSQL execution plans. It turns dense, hard-to-read JSON or text output into clear, interactive node graphs, helping you spot bottlenecks instantly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🚀 **Live Demo:** [https://balakondaveeti.github.io/pg-ray-postgres-explain-visualizer/](https://balakondaveeti.github.io/pg-ray-postgres-explain-visualizer/)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💡 Why I Built This
 
-## Expanding the ESLint configuration
+I created PG-Ray because I needed a way to visualize complex query plans without worrying about data privacy.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Most existing online visualizers require you to upload your query plans to a backend server. Since execution plans often contain sensitive schema information, table names, and statistical data, sending them to a third party is often a security risk for production environments.
+
+**PG-Ray is different.** It is designed to be **100% client-side**.
+* **No backend server.**
+* **No database.**
+* **No analytics tracking.**
+* **Your query plans never leave your browser tab.**
+
+It is a safe, lightweight utility that can be used by anyone, anywhere, even for confidential production schemas.
+
+---
+
+## ✨ Features
+
+* **🔒 Privacy First:** All parsing and rendering happens locally in your browser.
+* **📝 Dual Format Support:** Paste either **JSON** (`FORMAT JSON`) or standard **Text** output.
+* **🕸️ Interactive Graph:** Zoom, pan, and drag nodes to explore massive query trees.
+* **🎨 Visual Cues:** Color-coded nodes (Red for Scans, Blue for Joins) to instantly highlight performance costs.
+* **✅ Broad Compatibility:** Works with **PostgreSQL**, **Amazon Redshift**, and **CockroachDB**.
+
+---
+
+## 🛠️ How to Use
+
+1.  **Generate your plan:**
+    Run your query with `EXPLAIN (ANALYZE, COSTS, FORMAT JSON)`:
+    ```sql
+    EXPLAIN (ANALYZE, COSTS, FORMAT JSON)
+    SELECT * FROM users JOIN orders ON users.id = orders.user_id;
+    ```
+    *(Note: Standard text output without JSON formatting is also supported!)*
+
+2.  **Paste & Visualize:**
+    Copy the output and paste it into [PG-Ray](https://balakondaveeti.github.io/pg-ray-postgres-explain-visualizer/).
+
+3.  **Analyze:**
+    Look for red nodes (Scans) or high-cost nodes to identify optimization opportunities.
+
+---
+
+## 🏗️ Local Development
+
+If you want to run this locally or contribute:
+
+```bash
+# Clone the repo
+git clone [https://github.com/balakondaveeti/pg-ray-postgres-explain-visualizer.git](https://github.com/balakondaveeti/pg-ray-postgres-explain-visualizer.git)
+
+# Install dependencies
+npm install
+
+# Run the dev server
+npm run dev
