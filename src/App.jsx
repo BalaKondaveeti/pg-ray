@@ -7,7 +7,7 @@ import ReactFlow, {
   applyNodeChanges
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { Github, DatabaseZap } from 'lucide-react';
+import { Github, DatabaseZap, ShieldCheck } from 'lucide-react';
 
 import { parsePlanToGraph } from './utils/parser';
 import { parseTextPlan } from './utils/textParser';
@@ -74,32 +74,33 @@ function App() {
   return (
     <div className="flex h-screen w-full flex-col md:flex-row bg-gray-50">
 
-      {/* Sidebar: Input */}
-      <div className="w-full md:w-1/3 p-4 flex flex-col border-r bg-white shadow-sm z-10 h-full">
-
-        {/* Top Section */}
+     {/* Sidebar: Input */}
+     <div className="w-full md:w-1/3 p-4 flex flex-col border-r bg-white shadow-sm z-10 h-full">
+        
+        {/* TOP SECTION: Header, Inputs, Button */}
+        {/* flex-1 ensures the textarea expands to fill available height */}
         <div className="flex-1 flex flex-col min-h-0">
-          {/* Sidebar Title Section */}
+          
+          {/* Header */}
           <h1 className="text-2xl font-bold text-indigo-700 flex items-center gap-2">
-            <div className="p-2 bg-indigo-600 rounded-lg shadow-md">
-              {/* The Logo Icon */}
-              <DatabaseZap className="text-white w-6 h-6" />
-            </div>
-            <span>PG-Ray</span>
-            <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded ml-auto border border-indigo-200">
-              Explain Visualizer
-            </span>
+              <div className="p-2 bg-indigo-600 rounded-lg shadow-md">
+                  <DatabaseZap className="text-white w-6 h-6" />
+              </div>
+              <span>PG-Ray</span>
+              <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded ml-auto border border-indigo-200">
+                  Visualizer
+              </span>
           </h1>
 
-          {/* Subtitle / Compatibility Note */}
-          <div className="mt-2 mb-4 p-2 bg-gray-50 rounded border border-gray-100">
-            <p className="text-xs text-gray-500 leading-relaxed">
-              Compatible with <span className="font-semibold text-gray-700">PostgreSQL</span>, <span className="font-semibold text-gray-700">Amazon Redshift</span>, and <span className="font-semibold text-gray-700">CockroachDB</span>.
-              <br></br>
-              Uses React flow to show beautiful visualizations. Results are not stored (This is a safe webapp 🤝)!
-            </p>
+          {/* Compatibility Note */}
+          <div className="mt-2 mb-2 p-2 bg-gray-50 rounded border border-gray-100">
+              <p className="text-xs text-gray-500 leading-relaxed">
+                  <strong className="text-gray-700">Free online Postgres Explain Visualizer</strong>. 
+                  Optimize slow queries by turning JSON or text execution plans into clear graphs. 
+                  Compatible with <strong className="text-gray-700">PostgreSQL</strong>, <strong className="text-gray-700">AWS Redshift</strong>, and <strong className="text-gray-700">CockroachDB</strong>.
+              </p>
           </div>
-
+          
           <label className="text-sm font-semibold text-gray-700 mb-2 block">
             Paste the explain output:
           </label>
@@ -112,26 +113,39 @@ Seq Scan on users (cost=0.00..12.00)
             value={jsonInput}
             onChange={(e) => setJsonInput(e.target.value)}
           />
-
+          
           {error && (
-            <div className="mb-2 p-2 bg-red-50 text-red-600 text-xs rounded border border-red-200">
-              {error}
-            </div>
+              <div className="mb-2 p-2 bg-red-50 text-red-600 text-xs rounded border border-red-200">
+                  {error}
+              </div>
           )}
 
           <button
             onClick={handleVisualize}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-indigo-200"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-indigo-200 mb-4"
           >
             Visualize Plan
           </button>
         </div>
 
-        {/* Footer */}
-        <div className="mt-6 pt-4 border-t border-gray-100 text-center">
-          <a
-            href="https://github.com/BalaKondaveeti"
-            target="_blank"
+        {/* MIDDLE SECTION: Privacy Note */}
+        {/* Placed here so it sits between the button and the footer */}
+        <div className="mb-4">
+          <div className="flex items-start gap-2 p-2 bg-green-50 rounded border border-green-200 text-green-800">
+              <ShieldCheck className="w-4 h-4 mt-0.5 shrink-0" />
+              <p className="text-xs leading-tight">
+                  <strong>100% Secure & Private.</strong> 
+                  <br/>
+                  All processing happens locally in your browser. No data is stored or sent to any server.
+              </p>
+          </div>
+        </div>
+
+        {/* BOTTOM SECTION: Footer */}
+        <div className="pt-4 border-t border-gray-100 text-center">
+          <a 
+            href="https://github.com/BalaKondaveeti/pg-ray-postgres-explain-visualizer" 
+            target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 text-gray-500 hover:text-indigo-600 transition-colors text-sm font-medium"
           >
