@@ -2,7 +2,6 @@
 
 ![PG-Ray Banner](https://img.shields.io/badge/Postgres-Explain_Visualizer-4F46E5?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Privacy Focused](https://img.shields.io/badge/Privacy-100%25_Client_Side-green?style=for-the-badge&logo=shield)
-![Redshift Compatible](https://img.shields.io/badge/Redshift-Compatible-orange?style=for-the-badge&logo=amazonaws)
 
 **PG-Ray** is a free, privacy-first tool to visualize PostgreSQL and Redshift execution plans. It turns dense, hard-to-read JSON or text output into clear, interactive node graphs, helping you spot bottlenecks instantly.
 
