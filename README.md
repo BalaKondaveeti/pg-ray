@@ -6,33 +6,24 @@
 
 **PG-Ray** is a free, privacy-first tool to visualize PostgreSQL and Redshift execution plans. It turns dense, hard-to-read JSON or text output into clear, interactive node graphs, helping you spot bottlenecks instantly.
 
-### 🚀 **Live Demo:** [https://balakondaveeti.github.io/pg-ray-postgres-explain-visualizer/](https://balakondaveeti.github.io/pg-ray-postgres-explain-visualizer/)
+### 🚀 **Demo:** [https://balakondaveeti.github.io/pg-ray-postgres-explain-visualizer/](https://balakondaveeti.github.io/pg-ray-postgres-explain-visualizer/)
+Works with **PostgreSQL**, **Amazon RedshiftDB**, and **CockroachDB**.
 
 ---
 
-## 💡 Why I Built This
+## Why I Built This
 
-I work in **Amazon Redshift DB internals**, so I look at complex query plans every single day.
+I work on **Redshift DB internals**, so I look at complex query plans every single day.
 
-I needed a way to visualize these plans quickly, but I couldn't use existing online tools. Most of them require uploading data to a backend server. Since execution plans often contain sensitive schema information, table names, and statistical distributions, sending them to a third-party server is a major security risk for confidential or production environments.
+I needed a way to visualize these plans quickly, but I couldn't use existing online tools. Most of them upload user data to a backend server. Since execution plans often contain sensitive schema information like table names, and statistical distributions; sending them to a third-party server is a major security risk for confidential or production environments.
 
 **PG-Ray is my solution to this problem.** It is designed to be **100% client-side**.
+* **Your query plans never leave your browser tab.**
 * **No backend server.**
 * **No database.**
 * **No analytics tracking.**
-* **Your query plans never leave your browser tab.**
 
 It is a safe, lightweight utility that I built for myself, but it is useful for anyone tuning Postgres, Redshift, or CockroachDB queries.
-
----
-
-## Features
-
-* **🔒 Privacy First:** All parsing and rendering happens locally in your browser.
-* **📝 Dual Format Support:** Paste either **JSON** (`FORMAT JSON`) or standard **Text** output.
-* **🕸️ Interactive Graph:** Zoom, pan, and drag nodes to explore massive query trees.
-* **🎨 Visual Cues:** Color-coded nodes (Red for Scans, Blue for Joins) to instantly highlight performance costs.
-* **✅ Broad Compatibility:** Works with **PostgreSQL**, **Amazon Redshift**, and **CockroachDB**.
 
 ---
 
@@ -66,9 +57,9 @@ Would love your help in completing these! Here is what is coming next:
 
 ---
 
-## 🏗️ Local Development
+## Local Development
 
-If you want to run this locally:
+Run this locally:
 
 ```bash
 # Clone the repo
